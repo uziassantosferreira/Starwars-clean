@@ -38,6 +38,11 @@ android {
         versionCode ANDROID_VERSION_CODE
         versionName ANDROID_VERSION_NAME
         testInstrumentationRunner ANDROID_TEST_INSTRUMENTATION_RUNNER
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath false
+            }
+        }
     }
     buildTypes {
         release {
