@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/fab_qrcode"
+        android:icon="@drawable/ic_qrcode"
+        android:title="@string/add_by_qrcode" />
+
+    <item
+        android:id="@+id/fab_link"
+        android:icon="@drawable/ic_link"
+        android:title="@string/add_by_link" />
+
+</menu>

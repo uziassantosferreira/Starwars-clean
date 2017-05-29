@@ -1,9 +1,19 @@
 package com.starwars.people.di;
 
+import com.starwars.people.data.repository.PeopleRepository;
+import com.starwars.people.data.repository.PeopleRepositoryImpl;
 import com.starwars.people.data.repository.datasource.PeopleDataSource;
 import com.starwars.people.data.repository.datasource.networking.PeopleRestApi;
 import com.starwars.people.data.repository.datasource.networking.PeopleRestApiDataSource;
 import com.starwars.people.data.repository.datasource.orm.PeopleOrmDataSource;
+import com.starwars.people.domain.usecase.GetListPeople;
+import com.starwars.people.domain.usecase.GetListPeopleImpl;
+import com.starwars.people.domain.usecase.GetPerson;
+import com.starwars.people.domain.usecase.GetPersonImpl;
+import com.starwars.people.list.presentation.adapter.ListOfPeopleAdapter;
+import com.starwars.people.list.presentation.presenter.ListOfPeoplePresenter;
+import com.starwars.people.list.presentation.presenter.ListOfPeoplePresenterImpl;
+import com.starwars.people.navigation.Navigation;
 
 import javax.inject.Named;
 
@@ -31,6 +41,37 @@ public class PeopleModule {
     @Provides
     PeopleRestApi providesPeopleRestApi(Retrofit retrofit){
         return retrofit.create(PeopleRestApi.class);
+    }
+
+    @Provides
+    ListOfPeoplePresenter providesListOfPeoplePresenter(GetListPeople getListPeople, GetPerson getPerson) {
+        return new ListOfPeoplePresenterImpl(getListPeople, getPerson);
+    }
+
+    @Provides
+    GetListPeople providesGetListPeople(PeopleRepository peopleRepository){
+        return new GetListPeopleImpl(peopleRepository);
+    }
+
+    @Provides
+    GetPerson providesGetPerson(PeopleRepository peopleRepository){
+        return new GetPersonImpl(peopleRepository);
+    }
+
+    @Provides
+    PeopleRepository providesPeopleRepository(@Named("PeopleOrmDataSource") PeopleDataSource requeryDataSource,
+                                              @Named("PeopleRestApiDataSource") PeopleDataSource restApiDataSource){
+        return new PeopleRepositoryImpl(requeryDataSource, restApiDataSource);
+    }
+
+    @Provides
+    ListOfPeopleAdapter providesPeopleAdapter(){
+        return new ListOfPeopleAdapter();
+    }
+
+    @Provides
+    Navigation providesNavigation(){
+        return new Navigation();
     }
 
 }

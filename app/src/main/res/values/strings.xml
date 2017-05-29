@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">Star wars</string>
+    <string name="app_name">Star Wars</string>
+    <string name="list_item_person_picture_description">Picture about person</string>
+    <string name="add_by_qrcode">Adicionar por qrcode</string>
+    <string name="add_by_link">Adicionar por link</string>
+    <string name="hint_link">Digite o link</string>
+    <string name="scanning">Scaneando</string>
+
 </resources>
