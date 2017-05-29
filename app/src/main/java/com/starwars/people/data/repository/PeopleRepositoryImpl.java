@@ -2,6 +2,7 @@ package com.starwars.people.data.repository;
 
 import com.starwars.people.data.repository.datasource.PeopleDataSource;
 import com.starwars.people.domain.model.Person;
+import com.starwars.people.domain.repository.PeopleRepository;
 
 import io.reactivex.Observable;
 

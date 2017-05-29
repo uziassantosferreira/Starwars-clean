@@ -1,6 +1,6 @@
 package com.starwars.people.domain.usecase;
 
-import com.starwars.people.data.repository.PeopleRepository;
+import com.starwars.people.domain.repository.PeopleRepository;
 import com.starwars.people.domain.model.Person;
 
 import java.security.InvalidParameterException;

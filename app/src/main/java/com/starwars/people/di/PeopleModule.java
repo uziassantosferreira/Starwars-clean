@@ -1,7 +1,7 @@
 package com.starwars.people.di;
 
 import com.starwars.films.domain.usecase.GetFilm;
-import com.starwars.people.data.repository.PeopleRepository;
+import com.starwars.people.domain.repository.PeopleRepository;
 import com.starwars.people.data.repository.PeopleRepositoryImpl;
 import com.starwars.people.data.repository.datasource.PeopleDataSource;
 import com.starwars.people.data.repository.datasource.networking.PeopleRestApi;

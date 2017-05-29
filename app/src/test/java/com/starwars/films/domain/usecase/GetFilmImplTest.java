@@ -1,6 +1,6 @@
 package com.starwars.films.domain.usecase;
 
-import com.starwars.films.data.repository.FilmsRepository;
+import com.starwars.films.domain.repository.FilmsRepository;
 import com.starwars.films.domain.model.Film;
 
 import org.junit.Test;

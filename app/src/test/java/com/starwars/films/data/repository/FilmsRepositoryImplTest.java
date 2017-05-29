@@ -2,6 +2,7 @@ package com.starwars.films.data.repository;
 
 import com.starwars.films.data.repository.datasource.FilmsDataSource;
 import com.starwars.films.domain.model.Film;
+import com.starwars.films.domain.repository.FilmsRepository;
 
 import org.junit.Before;
 import org.junit.Test;

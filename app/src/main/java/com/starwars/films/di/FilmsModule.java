@@ -2,7 +2,7 @@ package com.starwars.films.di;
 
 import android.support.v4.app.FragmentManager;
 
-import com.starwars.films.data.repository.FilmsRepository;
+import com.starwars.films.domain.repository.FilmsRepository;
 import com.starwars.films.data.repository.FilmsRepositoryImpl;
 import com.starwars.films.data.repository.datasource.FilmsDataSource;
 import com.starwars.films.data.repository.datasource.networking.FilmsRestApi;

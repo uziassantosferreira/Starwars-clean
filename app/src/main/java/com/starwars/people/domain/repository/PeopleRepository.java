@@ -1,4 +1,4 @@
-package com.starwars.people.data.repository;
+package com.starwars.people.domain.repository;
 
 import com.starwars.people.domain.model.Person;
 

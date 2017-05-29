@@ -1,4 +1,4 @@
-package com.starwars.films.data.repository;
+package com.starwars.films.domain.repository;
 
 import com.starwars.films.domain.model.Film;
 
