@@ -3,7 +3,7 @@ package com.starwars.core.database.di;
 import android.app.Application;
 
 import com.starwars.BuildConfig;
-import com.starwars.people.data.repository.datasource.orm.entity.Models;
+import com.starwars.Models;
 
 import java.util.concurrent.Executors;
 
