@@ -3,6 +3,8 @@ package com.starwars.people.domain.model;
 import android.support.annotation.Nullable;
 
 import com.google.auto.value.AutoValue;
+import com.google.gson.Gson;
+import com.google.gson.TypeAdapter;
 
 import java.util.Date;
 import java.util.List;
@@ -27,6 +29,10 @@ public abstract class Person {
     @Nullable public abstract Date created();
     @Nullable public abstract Date edited();
     @Nullable public abstract String url();
+
+    public static TypeAdapter<Person> typeAdapter(Gson gson){
+        return new AutoValue_Person.GsonTypeAdapter(gson);
+    }
 
     public static Person.Builder builder(){
         return new AutoValue_Person.Builder();

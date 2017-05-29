@@ -3,6 +3,7 @@ package com.starwars.core.database.di;
 import android.app.Application;
 
 import com.starwars.BuildConfig;
+import com.starwars.people.data.repository.datasource.orm.entity.Models;
 
 import java.util.concurrent.Executors;
 
@@ -39,9 +40,7 @@ public class DatabaseModule {
 
     @Provides
     EntityModel provideModels() {
-        //TODO CREATE FIRST CLASS WITH ANNOTATION ENTITY TO GENERATE MODELS
-        return null;
-        //return Models.DEFAULT;
+        return Models.DEFAULT;
     }
 
     @Provides
