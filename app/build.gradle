@@ -1,15 +1,43 @@
 apply plugin: 'com.android.application'
+ext {
+    ANDROID_SUPPORT_VERSION = '25.3.1'
+    RXJAVA_VERSION = '2.1.0'
+    RXANDROID_VERSION = '2.0.1'
+    CONSTRAINT_LAYOUT_VERSION = '1.0.2'
+    JUNIT_VERSION = '4.12'
+    ESPRESSO_CORE_VERSION = '2.2.2'
+    ANDROID_COMPILE_SDK_VERSION = 25
+    ANDROID_BUILD_TOOLS_VERSION = '25.0.3'
+    ANDROID_MIN_SDK_VERSION = 21
+    ANDROID_TARGET_SDK_VERSION = 25
+    ANDROID_VERSION_CODE = 1
+    ANDROID_VERSION_NAME = '1.0'
+    DAGGER_VERSION = '2.10'
+    RETROFIT_VERSION = '2.2.0'
+    AUTO_VALUE_VERSION = '1.2-rc1'
+    AUTO_VALUE_GSON_VERSION = '0.4.5'
+    LOGGGING_INTERCEPTOR_VERSION = '3.7.0'
+    REQUERY_VERSION = '1.3.2'
+    GSON_VERSION = '2.8.0'
+    BUTTER_KNIFE_VERSION = '8.6.0'
+    BARCODE_SCANNER_VERSION = '0.0.6-ALPHA'
+    MOCKITO_VERSION = '2.8.9'
+    MOCK_WEB_SERVER_VERSION = '2.7.5'
+    SQLITE_JDBC_VERSION = '3.18.0'
+    ANDROID_APPLICATION_ID = 'com.starwars'
+    ANDROID_TEST_INSTRUMENTATION_RUNNER = 'android.support.test.runner.AndroidJUnitRunner'
+}
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    compileSdkVersion ANDROID_COMPILE_SDK_VERSION
+    buildToolsVersion ANDROID_BUILD_TOOLS_VERSION
     defaultConfig {
-        applicationId "com.starwars"
-        minSdkVersion 19
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        applicationId ANDROID_APPLICATION_ID
+        minSdkVersion ANDROID_MIN_SDK_VERSION
+        targetSdkVersion ANDROID_TARGET_SDK_VERSION
+        versionCode ANDROID_VERSION_CODE
+        versionName ANDROID_VERSION_NAME
+        testInstrumentationRunner ANDROID_TEST_INSTRUMENTATION_RUNNER
     }
     buildTypes {
         release {
@@ -20,10 +48,47 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    testCompile 'junit:junit:4.12'
+    compile "com.android.support:appcompat-v7:${ANDROID_SUPPORT_VERSION}"
+    compile "com.android.support:support-v4:${ANDROID_SUPPORT_VERSION}"
+    compile "com.android.support:design:${ANDROID_SUPPORT_VERSION}"
+    compile "com.android.support:cardview-v7:${ANDROID_SUPPORT_VERSION}"
+    compile "com.android.support:recyclerview-v7:${ANDROID_SUPPORT_VERSION}"
+    compile "com.android.support.constraint:constraint-layout:${CONSTRAINT_LAYOUT_VERSION}"
+
+
+    compile "io.reactivex.rxjava2:rxjava:${RXJAVA_VERSION}"
+    compile "io.reactivex.rxjava2:rxandroid:${RXANDROID_VERSION}"
+
+    compile "com.jakewharton:butterknife:${BUTTER_KNIFE_VERSION}"
+    annotationProcessor "com.jakewharton:butterknife-compiler:${BUTTER_KNIFE_VERSION}"
+
+    compile "com.google.dagger:dagger-android:${DAGGER_VERSION}"
+    annotationProcessor "com.google.dagger:dagger-compiler:${DAGGER_VERSION}"
+
+    compile "com.squareup.retrofit2:retrofit:${RETROFIT_VERSION}"
+    compile "com.squareup.retrofit2:converter-gson:${RETROFIT_VERSION}"
+    compile "com.squareup.retrofit2:adapter-rxjava2:${RETROFIT_VERSION}"
+    compile "com.squareup.okhttp3:logging-interceptor:${LOGGGING_INTERCEPTOR_VERSION}"
+
+    compile "com.google.code.gson:gson:${GSON_VERSION}"
+
+    annotationProcessor "com.google.auto.value:auto-value:${AUTO_VALUE_VERSION}"
+    annotationProcessor "com.ryanharter.auto.value:auto-value-gson:${AUTO_VALUE_GSON_VERSION}"
+    provided "com.ryanharter.auto.value:auto-value-gson:${AUTO_VALUE_GSON_VERSION}"
+
+    compile "io.requery:requery:${REQUERY_VERSION}"
+    compile "io.requery:requery-android:${REQUERY_VERSION}"
+    annotationProcessor "io.requery:requery-processor:${REQUERY_VERSION}"
+
+    compile "com.edwardvanraak:MaterialBarcodeScanner:${BARCODE_SCANNER_VERSION}"
+
+    testCompile "org.mockito:mockito-core:${MOCKITO_VERSION}"
+
+    testCompile "com.squareup.okhttp:mockwebserver:${MOCK_WEB_SERVER_VERSION}"
+
+    testCompile "junit:junit:${JUNIT_VERSION}"
+
+    testAnnotationProcessor "com.google.dagger:dagger-compiler:${DAGGER_VERSION}"
+
+    testCompile "org.xerial:sqlite-jdbc:${SQLITE_JDBC_VERSION}"
 }
