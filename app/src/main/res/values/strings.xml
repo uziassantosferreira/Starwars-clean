@@ -6,4 +6,14 @@
     <string name="hint_link">Digite o link</string>
     <string name="scanning">Scaneando</string>
 
+    <string name="activity_person_details_name_label">Nome</string>
+    <string name="activity_person_details_height_label">Altura</string>
+    <string name="activity_person_details_mass_label">Massa</string>
+    <string name="activity_person_details_hair_color_label">Cor do cabelo</string>
+    <string name="activity_person_details_skin_color_label">Cor da pele</string>
+    <string name="activity_person_details_eye_color_label">Cor do olho</string>
+    <string name="activity_person_details_birth_year_label">Ano de nascimento</string>
+    <string name="activity_person_details_gender_label">Gênero</string>
+    <string name="activity_person_details_url_label">Url</string>
+    <string name="activity_person_details_films_label">Filmes</string>
 </resources>

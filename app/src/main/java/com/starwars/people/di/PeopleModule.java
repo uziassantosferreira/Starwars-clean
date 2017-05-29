@@ -6,6 +6,8 @@ import com.starwars.people.data.repository.datasource.PeopleDataSource;
 import com.starwars.people.data.repository.datasource.networking.PeopleRestApi;
 import com.starwars.people.data.repository.datasource.networking.PeopleRestApiDataSource;
 import com.starwars.people.data.repository.datasource.orm.PeopleOrmDataSource;
+import com.starwars.people.details.presentation.presenter.PersonDetailsPresenter;
+import com.starwars.people.details.presentation.presenter.PersonDetailsPresenterImpl;
 import com.starwars.people.domain.usecase.GetListPeople;
 import com.starwars.people.domain.usecase.GetListPeopleImpl;
 import com.starwars.people.domain.usecase.GetPerson;
@@ -72,6 +74,11 @@ public class PeopleModule {
     @Provides
     Navigation providesNavigation(){
         return new Navigation();
+    }
+
+    @Provides
+    PersonDetailsPresenter providesPersonDetailsPresenter(GetPerson getPerson) {
+        return new PersonDetailsPresenterImpl(getPerson);
     }
 
 }
