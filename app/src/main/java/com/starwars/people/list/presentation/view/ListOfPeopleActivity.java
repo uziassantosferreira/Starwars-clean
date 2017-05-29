@@ -16,6 +16,7 @@ import com.starwars.R;
 import com.starwars.core.fab.OptionsFabLayout;
 import com.starwars.core.listener.OnItemClick;
 import com.starwars.core.presentation.BaseActivity;
+import com.starwars.films.di.FilmsModule;
 import com.starwars.people.di.DaggerPeopleComponent;
 import com.starwars.people.di.PeopleComponent;
 import com.starwars.people.di.PeopleModule;
@@ -78,6 +79,7 @@ public class ListOfPeopleActivity extends BaseActivity implements ListOfPeopleVi
         PeopleComponent peopleComponent = DaggerPeopleComponent.builder()
                     .appComponent(getAppComponent())
                     .peopleModule(new PeopleModule())
+                    .filmsModule(new FilmsModule(getSupportFragmentManager()))
                     .build();
         peopleComponent.inject(this);
     }

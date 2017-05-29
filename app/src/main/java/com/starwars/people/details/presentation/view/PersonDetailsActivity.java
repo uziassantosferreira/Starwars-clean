@@ -7,6 +7,9 @@ import android.widget.TextView;
 
 import com.starwars.R;
 import com.starwars.core.presentation.BaseActivity;
+import com.starwars.films.di.FilmsModule;
+import com.starwars.films.presentation.adapter.FilmPageAdapter;
+import com.starwars.films.presentation.model.PresentationFilm;
 import com.starwars.people.details.presentation.model.PresentationPerson;
 import com.starwars.people.details.presentation.presenter.PersonDetailsPresenter;
 import com.starwars.people.di.DaggerPeopleComponent;
@@ -55,11 +58,16 @@ public class PersonDetailsActivity extends BaseActivity implements PersonDetails
     @Inject
     PersonDetailsPresenter personDetailsPresenter;
 
+    @Inject
+    FilmPageAdapter filmPageAdapter;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_person_details);
         injectDependencies();
+
+        viewPager.setAdapter(filmPageAdapter);
 
         personDetailsPresenter.attachTo(this);
         personDetailsPresenter.setUrl(getIntent().getStringExtra(EXTRA_URL));
@@ -70,6 +78,7 @@ public class PersonDetailsActivity extends BaseActivity implements PersonDetails
         ButterKnife.bind(this);
         PeopleComponent personDetailsComponent = DaggerPeopleComponent.builder()
                 .appComponent(getAppComponent())
+                .filmsModule(new FilmsModule(getSupportFragmentManager()))
                 .peopleModule(new PeopleModule())
                 .build();
         personDetailsComponent.inject(this);
@@ -97,6 +106,11 @@ public class PersonDetailsActivity extends BaseActivity implements PersonDetails
         textViewEyeColor.setText(person.eyeColor());
         textViewBirthYear.setText(person.birthYear());
         textViewGender.setText(person.gender());
+    }
+
+    @Override
+    public void addFilm(PresentationFilm film) {
+        filmPageAdapter.addItem(film);
     }
 
 }

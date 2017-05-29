@@ -1,5 +1,6 @@
 package com.starwars.people.di;
 
+import com.starwars.films.domain.usecase.GetFilm;
 import com.starwars.people.data.repository.PeopleRepository;
 import com.starwars.people.data.repository.PeopleRepositoryImpl;
 import com.starwars.people.data.repository.datasource.PeopleDataSource;
@@ -77,8 +78,8 @@ public class PeopleModule {
     }
 
     @Provides
-    PersonDetailsPresenter providesPersonDetailsPresenter(GetPerson getPerson) {
-        return new PersonDetailsPresenterImpl(getPerson);
+    PersonDetailsPresenter providesPersonDetailsPresenter(GetPerson getPerson, GetFilm getFilm) {
+        return new PersonDetailsPresenterImpl(getPerson, getFilm);
     }
 
 }
