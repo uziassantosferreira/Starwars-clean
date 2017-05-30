@@ -28,7 +28,7 @@ public class JsonFilmMapperTest {
 
     private String getJson() throws IOException {
         return JsonResourceLoader
-                .forResource("json.film/jsonFilm.json")
+                .forResource("json.film/JsonFilm.json")
                 .getJson();
     }
 

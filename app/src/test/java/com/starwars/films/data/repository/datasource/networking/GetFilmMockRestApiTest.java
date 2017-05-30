@@ -1,16 +1,16 @@
 package com.starwars.films.data.repository.datasource.networking;
 
+import android.support.v4.app.FragmentManager;
+
 import com.starwars.core.networking.MockRestApi;
 import com.starwars.core.utils.json.JsonObjectConverter;
 import com.starwars.films.data.repository.datasource.networking.json.JsonFilm;
 import com.starwars.films.di.DaggerFilmsComponentTest;
 import com.starwars.films.di.FilmsComponentTest;
-import com.starwars.people.data.repository.datasource.networking.PeopleRestApi;
-import com.starwars.people.data.repository.datasource.networking.json.JsonPerson;
-import com.starwars.people.di.DaggerPeopleComponentTest;
-import com.starwars.people.di.PeopleComponentTest;
+import com.starwars.films.di.FilmsModule;
 
 import org.junit.Test;
+import org.mockito.Mock;
 
 import java.io.IOException;
 
@@ -20,12 +20,16 @@ public class GetFilmMockRestApiTest extends MockRestApi<FilmsRestApi> {
 
     private static final String MOCK_ID = "1";
 
+    @Mock
+    private FragmentManager fragmentManager;
+
     @Override
     public void setUp() throws IOException {
         super.setUp();
 
         FilmsComponentTest filmsComponentTest = DaggerFilmsComponentTest.builder()
                 .appComponent(getTestAppComponent())
+                .filmsModule(new FilmsModule(fragmentManager))
                 .build();
 
         filmsComponentTest.inject(this);

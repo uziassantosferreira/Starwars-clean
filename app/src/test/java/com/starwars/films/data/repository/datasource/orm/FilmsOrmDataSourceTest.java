@@ -1,6 +1,7 @@
 package com.starwars.films.data.repository.datasource.orm;
 
 import android.app.Application;
+import android.support.v4.app.FragmentManager;
 
 import com.starwars.core.database.di.DatabaseModuleTest;
 import com.starwars.core.di.AppComponent;
@@ -13,6 +14,7 @@ import com.starwars.films.data.repository.datasource.orm.entity.FilmEntityType;
 import com.starwars.films.data.repository.datasource.orm.mapper.FilmEntityMapper;
 import com.starwars.films.di.DaggerFilmsComponentTest;
 import com.starwars.films.di.FilmsComponentTest;
+import com.starwars.films.di.FilmsModule;
 import com.starwars.films.domain.model.Film;
 
 import org.junit.After;
@@ -37,12 +39,15 @@ public class FilmsOrmDataSourceTest {
 
     @Mock
     private Application application;
+    @Mock
+    private FragmentManager fragmentManager;
 
     private Film film;
     private FilmsOrmDataSource filmsOrmDataSource;
 
     @Inject
     ReactiveEntityStore<Persistable> data;
+
 
     @Before
     public void setUp() {
@@ -68,6 +73,7 @@ public class FilmsOrmDataSourceTest {
                 .build();
 
         FilmsComponentTest filmsComponentTest = DaggerFilmsComponentTest.builder()
+                .filmsModule(new FilmsModule(fragmentManager))
                 .appComponent(appComponent)
                 .build();
 
