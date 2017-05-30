@@ -1,6 +1,8 @@
 package com.starwars.people.list.presentation.view;
 
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
@@ -124,6 +126,15 @@ public class ListOfPeopleActivity extends BaseActivity implements ListOfPeopleVi
                 .withResultListener(barcode -> listOfPeoplePresenter.resultMaterialBarcode(barcode.rawValue))
                 .build();
         materialBarcodeScanner.startScan();
+    }
+
+    //TODO WORKAROUND TO START LIB AFTER PERMISSION.
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode ==2 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+           openQrcodeView();
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     @Override
