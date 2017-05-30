@@ -26,6 +26,7 @@ ext {
     SQLITE_JDBC_VERSION = '3.18.0'
     ANDROID_APPLICATION_ID = 'com.starwars'
     ANDROID_TEST_INSTRUMENTATION_RUNNER = 'android.support.test.runner.AndroidJUnitRunner'
+    ESPRESSO_CORE_VERSION = '2.2.2'
 }
 
 android {
@@ -69,7 +70,6 @@ dependencies {
     compile "com.android.support:recyclerview-v7:${ANDROID_SUPPORT_VERSION}"
     compile "com.android.support.constraint:constraint-layout:${CONSTRAINT_LAYOUT_VERSION}"
 
-
     compile "io.reactivex.rxjava2:rxjava:${RXJAVA_VERSION}"
     compile "io.reactivex.rxjava2:rxandroid:${RXANDROID_VERSION}"
 
@@ -105,4 +105,7 @@ dependencies {
     testAnnotationProcessor "com.google.dagger:dagger-compiler:${DAGGER_VERSION}"
 
     testCompile "org.xerial:sqlite-jdbc:${SQLITE_JDBC_VERSION}"
+    androidTestCompile "com.android.support.test.espresso:espresso-core:${ESPRESSO_CORE_VERSION}", {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
 }
