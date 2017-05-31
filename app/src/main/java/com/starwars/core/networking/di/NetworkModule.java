@@ -1,7 +1,5 @@
 package com.starwars.core.networking.di;
 
-import android.app.Application;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.starwars.BuildConfig;
@@ -29,11 +27,12 @@ public class NetworkModule {
 
     private static final int CONNECTION_TIME_OUT = 120000;
     private static final int READ_TIME_OUT = 120000;
+    private static final String API_URL = "http://swapi.co/api/";
 
     @Provides
     @Named("baseUrl")
-    String providesBaseUrl(Application application) {
-        return "http://swapi.co/api/";
+    String providesBaseUrl() {
+        return API_URL;
     }
 
     @Provides

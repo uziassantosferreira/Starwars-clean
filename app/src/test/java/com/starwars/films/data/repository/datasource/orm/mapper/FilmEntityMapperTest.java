@@ -1,6 +1,6 @@
 package com.starwars.films.data.repository.datasource.orm.mapper;
 
-import com.google.common.reflect.TypeToken;
+import com.google.gson.reflect.TypeToken;
 import com.starwars.core.utils.json.JsonObjectConverter;
 import com.starwars.core.utils.json.JsonResourceLoader;
 import com.starwars.films.data.repository.datasource.orm.entity.FilmEntity;
@@ -23,20 +23,15 @@ public class FilmEntityMapperTest {
     private List<FilmEntity> filmEntities;
 
     @Before
-    public void setUp() {
+    public void setUp() throws IOException {
         filmEntities = JsonObjectConverter.convertArrayFromJson(getJson(),
                 new TypeToken<List<FilmEntity>>() {}.getType());
     }
 
-    private String getJson() {
-        try {
-            return JsonResourceLoader
+    private String getJson() throws IOException {
+        return JsonResourceLoader
                     .forResource("json.film/FilmEntityArray.json")
                     .getJson();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
     @Test
